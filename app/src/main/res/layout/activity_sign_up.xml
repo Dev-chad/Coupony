@@ -60,7 +60,7 @@
         </LinearLayout>
 
         <Button
-
+            android:id="@+id/btn_signup"
             android:text="Let's start!"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
