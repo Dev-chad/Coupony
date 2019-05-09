@@ -4,6 +4,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.coupony.User;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -60,7 +62,7 @@ public class HttpConnect extends AsyncTask<Void, Void, String> {
             }
 
             data = buff.toString().trim();
-            requestCallback.callBack(data);
+
 
             return data;
         } catch (MalformedURLException e) {

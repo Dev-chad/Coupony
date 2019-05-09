@@ -1,4 +1,4 @@
-package com.example.coupony.Utils;
+package com.example.coupony;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
