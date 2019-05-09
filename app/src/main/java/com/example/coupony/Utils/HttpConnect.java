@@ -18,10 +18,12 @@ public class HttpConnect extends AsyncTask<Void, Integer, Void> {
 
     private String param;
     private String url;
+    private HttpRequestCallback requestCallback;
 
-    public HttpConnect(String param, String url){
+    public HttpConnect(String param, String url, HttpRequestCallback requestCallback){
         this.param = param;
         this.url = url;
+        this.requestCallback = requestCallback;
     }
 
     @Override
@@ -58,7 +60,7 @@ public class HttpConnect extends AsyncTask<Void, Integer, Void> {
             }
 
             data = buff.toString().trim();
-            Log.e("RECV DATA", data);
+            requestCallback.callBack(data);
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
