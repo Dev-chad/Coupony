@@ -14,7 +14,7 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
-public class HttpConnect extends AsyncTask<Void, Integer, Void> {
+public class HttpConnect extends AsyncTask<Void, Void, String> {
 
     private String param;
     private String url;
@@ -27,7 +27,7 @@ public class HttpConnect extends AsyncTask<Void, Integer, Void> {
     }
 
     @Override
-    protected Void doInBackground(Void... unused) {
+    protected String doInBackground(Void... unused) {
 
         /* 인풋 파라메터값 생성 */
 
@@ -62,6 +62,7 @@ public class HttpConnect extends AsyncTask<Void, Integer, Void> {
             data = buff.toString().trim();
             requestCallback.callBack(data);
 
+            return data;
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -71,4 +72,10 @@ public class HttpConnect extends AsyncTask<Void, Integer, Void> {
         return null;
     }
 
+    @Override
+    protected void onPostExecute(String result) {
+        super.onPostExecute(result);
+
+        requestCallback.callBack(result);
+    }
 }
