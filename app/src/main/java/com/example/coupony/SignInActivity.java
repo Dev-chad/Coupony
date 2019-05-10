@@ -33,16 +33,6 @@ public class SignInActivity extends AppCompatActivity {
 
                 HttpConnect httpConnect = new HttpConnect(param, Constant.SERVER_LOGIN_ADDRESS, httpRequestCallback);
                 httpConnect.execute();
-                //connect
-
-                //if (id.equals(id) && password.equals(password)) {
-                //    Toast.makeText(SignInActivity.this, "같아요", Toast.LENGTH_LONG).show();
-                //    Intent intent = new Intent(SignInActivity.this, ShopCategory.class);
-                //    startActivity(intent);
-                //    finish();
-                //} else {
-                //    Toast.makeText(SignInActivity.this, "달라요", Toast.LENGTH_LONG).show();
-                //}
             }
         });
 
@@ -79,6 +69,10 @@ public class SignInActivity extends AppCompatActivity {
 
                     User user = new User(userobj.getInt("idx"), userobj.getString("userid"),
                             userobj.getString("name"), userobj.getBoolean("has_shop"), userobj.getBoolean("is_super"), userobj.getString("status"));
+
+                    Intent intent = new Intent(SignInActivity.this, ShopCategory.class);
+                    intent.putExtra("User", user);
+                    startActivity(intent);
 
                 }
             } catch (JSONException e) {
