@@ -24,8 +24,8 @@ public class SignInActivity extends AppCompatActivity {
         findViewById(R.id.btn_signin).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText editText1 = (EditText) findViewById(R.id.input_e);
-                EditText editText2 = (EditText) findViewById(R.id.input_p);
+                EditText editText1 = findViewById(R.id.input_e);
+                EditText editText2 = findViewById(R.id.input_p);
                 String id = editText1.getText().toString();
                 // String password = Encrypt.getSHA256(editText2.getText().toString());
                 String password = editText2.getText().toString();
@@ -71,7 +71,8 @@ public class SignInActivity extends AppCompatActivity {
                             userobj.getString("name"), userobj.getBoolean("has_shop"), userobj.getBoolean("is_super"), userobj.getString("status"));
 
                     Intent intent = new Intent(SignInActivity.this, ShopCategory.class);
-                    intent.putExtra("User", user);
+                    intent.putExtra("user", user);
+                    //요골ㅆ써서 "Catagory", 각명칭
                     startActivity(intent);
 
                 }
