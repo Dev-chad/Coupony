@@ -14,7 +14,10 @@ public class ShopInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_shop_info);
 
         Intent intent = getIntent();
+
+        User user = intent.getParcelableExtra("user");
         Shop shop = intent.getParcelableExtra("shop");
+        User owner = shop.getOwner();
 
         ImageView imageViewLogo = findViewById(R.id.image_logo);
         TextView textViewShopName = findViewById(R.id.text_shop_name);
@@ -25,6 +28,13 @@ public class ShopInfoActivity extends AppCompatActivity {
         TextView textViewOwnerName = findViewById(R.id.text_owner_name);
         TextView textViewBusinessNumber = findViewById(R.id.text_business_number);
 
-
+        imageViewLogo.setImageBitmap(shop.getLogo());
+        textViewShopName.setText(shop.getName());
+        textViewIntroduce.setText(shop.getDesc());
+        textViewTime.setText(shop.getBusinessHour());
+        textViewClosedDay.setText(shop.getClosedDay());
+        textViewCall.setText(shop.getPhone());
+        textViewOwnerName.setText(owner.getName());
+        textViewBusinessNumber.setText(owner.getBusinessNumber());
     }
 }

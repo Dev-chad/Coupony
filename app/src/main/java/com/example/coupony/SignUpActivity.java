@@ -61,10 +61,7 @@ public class SignUpActivity extends AppCompatActivity {
                 } else {
                     HttpConnect httpConnect = new HttpConnect(param, Constant.SERVER_SIGNUP_ADDRESS, httpRequestCallback);
                     httpConnect.execute();
-
                 }
-
-
             }
         });
     }
