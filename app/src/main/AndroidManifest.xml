@@ -14,7 +14,13 @@
         <activity android:name=".ShopInfoActivity">
 
         </activity>
-        <activity android:name=".ShopListActivity" />
+        <activity android:name=".ShopListActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".CouponList" />
         <activity android:name=".ShopCategory" />
         <activity android:name=".ResetPassword" />
@@ -22,11 +28,7 @@
         <activity android:name=".SignInActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
