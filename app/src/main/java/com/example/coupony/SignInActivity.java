@@ -29,7 +29,7 @@ public class SignInActivity extends AppCompatActivity {
                 String id = editText1.getText().toString();
                 // String password = Encrypt.getSHA256(editText2.getText().toString());
                 String password = editText2.getText().toString();
-                String param = "userid=" + id + "&password=" + password;
+                String param = "userId=" + id + "&password=" + password;
 
                 HttpConnect httpConnect = new HttpConnect(param, Constant.SERVER_LOGIN_ADDRESS, httpRequestCallback);
                 httpConnect.execute();
@@ -64,23 +64,21 @@ public class SignInActivity extends AppCompatActivity {
                 JSONObject jsonObject = new JSONObject(jsonResult);
 
                 String result = jsonObject.getString("result");
-                if(result.equals("ok")){
-                    JSONObject userobj = jsonObject.getJSONObject("user_data");
+                if (result.equals("ok")) {
+                    JSONObject userObj = jsonObject.getJSONObject("user_data");
 
-                    User user = new User(userobj.getInt("idx"), userobj.getString("userid"),
-                            userobj.getString("name"), userobj.getBoolean("has_shop"), userobj.getBoolean("is_super"), userobj.getString("status"));
+                    User user = new User(userObj.getInt("idx"), userObj.getString("userId"),
+                            userObj.getString("name"), userObj.getBoolean("has_shop"),
+                            userObj.getBoolean("is_super"), userObj.getString("status"), userObj.getString("business_number"));
 
                     Intent intent = new Intent(SignInActivity.this, ShopCategory.class);
                     intent.putExtra("user", user);
-                    //요골ㅆ써서 "Catagory", 각명칭
                     startActivity(intent);
 
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
-           // User user = new User();
         }
     };
 }

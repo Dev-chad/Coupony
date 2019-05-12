@@ -24,5 +24,7 @@ public class ShopInfoActivity extends AppCompatActivity {
         TextView textViewCall = findViewById(R.id.text_call);
         TextView textViewOwnerName = findViewById(R.id.text_owner_name);
         TextView textViewBusinessNumber = findViewById(R.id.text_business_number);
+
+
     }
 }

@@ -5,38 +5,42 @@ import android.os.Parcelable;
 
 public class User implements Parcelable {
     private int idx;
-    private String userid;
+    private String userId;
     private String name;
     private boolean bShop;
     private boolean bSuper;
     private String status;
+    private String businessNumber;
 
-    public User(int idx, String userid, String name, boolean bShop, boolean bSuper, String status) {
+    public User(int idx, String userId, String name, boolean bShop, boolean bSuper, String status, String businessNumber) {
         this.idx = idx;
-        this.userid = userid;
+        this.userId = userId;
         this.name = name;
         this.bShop = bShop;
         this.bSuper = bSuper;
         this.status = status;
+        this.businessNumber = businessNumber;
     }
 
     protected User(Parcel in) {
         idx = in.readInt();
-        userid = in.readString();
+        userId = in.readString();
         name = in.readString();
         bShop = in.readByte() != 0;
         bSuper = in.readByte() != 0;
         status = in.readString();
+        businessNumber = in.readString();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(idx);
-        dest.writeString(userid);
+        dest.writeString(userId);
         dest.writeString(name);
         dest.writeByte((byte) (bShop ? 1 : 0));
         dest.writeByte((byte) (bSuper ? 1 : 0));
         dest.writeString(status);
+        dest.writeString(businessNumber);
     }
 
     @Override
@@ -60,8 +64,8 @@ public class User implements Parcelable {
         return idx;
     }
 
-    public String getUserID() {
-        return userid;
+    public String getUserId() {
+        return userId;
     }
 
     public String getName() {
@@ -94,5 +98,13 @@ public class User implements Parcelable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getBusinessNumber() {
+        return businessNumber;
+    }
+
+    public void setBusinessNumber(String businessNumber) {
+        this.businessNumber = businessNumber;
     }
 }

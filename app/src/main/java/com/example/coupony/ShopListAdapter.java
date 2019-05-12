@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
+import android.os.AsyncTask;
+import android.os.Handler;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,29 +55,41 @@ public class ShopListAdapter extends BaseAdapter {
 
         final Shop shop = shopList.get(position);
 
-        ImageView imageLogo = view.findViewById(R.id.image_logo);
+        final ImageView imageLogo = view.findViewById(R.id.image_logo);
         TextView textName = view.findViewById(R.id.text_name);
         TextView textDesc = view.findViewById(R.id.text_desc);
 
         textName.setText(shop.getName());
         textDesc.setText(shop.getDesc());
 
-        if(shop.getLogoUrl().isEmpty()){
+        if (shop.getLogoUrl().isEmpty()) {
             imageLogo.setImageResource(R.drawable.smile);
-        }else{
+        } else if(shop.getLogo() != null){
+            imageLogo.setImageBitmap(shop.getLogo());
+        }else {
 
-            Thread imageLoadThread = new Thread(){
+            final Handler handler = new Handler();
+
+            Thread imageLoadThread = new Thread() {
                 @Override
                 public void run() {
                     try {
                         URL url = new URL(shop.getLogoUrl());
 
-                        HttpURLConnection connect = (HttpURLConnection)url.openConnection();
+                        HttpURLConnection connect = (HttpURLConnection) url.openConnection();
                         connect.setDoInput(true);
                         connect.connect();
 
                         InputStream is = connect.getInputStream();
                         shop.setLogo(BitmapFactory.decodeStream(is));
+
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                imageLogo.setImageBitmap(shop.getLogo());
+                            }
+                        });
+
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
@@ -85,21 +99,10 @@ public class ShopListAdapter extends BaseAdapter {
             };
 
             imageLoadThread.start();
-
-            try {
-                imageLoadThread.join();
-
-                Bitmap logo = shop.getLogo();
-
-                if(logo != null){
-                    imageLogo.setImageBitmap(logo);
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
-
 
         return view;
     }
+
+
 }

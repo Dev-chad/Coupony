@@ -7,19 +7,19 @@ public class Shop {
     private String name;
     private String address;
     private String desc;
-    private int ownerIdx;
+    private User owner;
     private String category;
     private String regDate;
     private String status;
     private String logoUrl;
     private Bitmap logo;
 
-    public Shop(int idx, String name, String address, String desc, int ownerIdx, String category, String regDate, String status, String logoUrl) {
+    public Shop(int idx, String name, String address, String desc, User owner, String category, String regDate, String status, String logoUrl) {
         this.idx = idx;
         this.name = name;
         this.address = address;
         this.desc = desc;
-        this.ownerIdx = ownerIdx;
+        this.owner = owner;
         this.category = category;
         this.regDate = regDate;
         this.status = status;
@@ -58,12 +58,12 @@ public class Shop {
         this.desc = desc;
     }
 
-    public int getOwnerIdx() {
-        return ownerIdx;
+    public User getOwner() {
+        return owner;
     }
 
-    public void setOwnerIdx(int ownerIdx) {
-        this.ownerIdx = ownerIdx;
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 
     public String getCategory() {
