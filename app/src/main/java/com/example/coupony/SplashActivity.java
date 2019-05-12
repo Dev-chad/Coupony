@@ -26,7 +26,7 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        }, 2000);
+        }, 1000);
 
         /*ImageView smileImg = findViewById(R.id.smile);
         smileImg.setOnClickListener(new View.OnClickListener() {

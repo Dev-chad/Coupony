@@ -30,7 +30,6 @@ public class ShopListActivity extends AppCompatActivity {
 
         final ArrayList<Shop> shopList = new ArrayList<>();
 
-        shopList.add(new Shop(1, "스타벅스", "화곡동", "커피 전문점", 1, "coffee", "2019-05-11", "Y", "https://t1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/5ns/image/N7ezeQHfjA5Ekdl3TIQjwWYEs2c.png"));
 
         ShopListAdapter adapter = new ShopListAdapter(this, R.layout.listview_shop, shopList);
 
