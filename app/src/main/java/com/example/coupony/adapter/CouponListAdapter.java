@@ -1,4 +1,4 @@
-package com.example.coupony;
+package com.example.coupony.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,13 +7,17 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class CustomAdapter_coupon extends BaseAdapter {
-    CouponList couponList;
+import com.example.coupony.Activity.CouponListActivity;
+import com.example.coupony.Data.Coupon;
+import com.example.coupony.R;
+
+public class CouponListAdapter extends BaseAdapter {
+    CouponListActivity couponListActivity;
     int layout;
     Coupon[] coupons;
 
-    CustomAdapter_coupon(CouponList couponList, int layout, Coupon[] coupons){
-        this.couponList = couponList;
+    CouponListAdapter(CouponListActivity couponListActivity, int layout, Coupon[] coupons) {
+        this.couponListActivity = couponListActivity;
         this.layout = layout;
         this.coupons = coupons;
     }
@@ -25,14 +29,14 @@ public class CustomAdapter_coupon extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = couponList.getLayoutInflater();
+        LayoutInflater inflater = couponListActivity.getLayoutInflater();
         View viewCoupon = inflater.inflate(layout, null);
 
-        ImageView img_coupon= viewCoupon.findViewById(R.id.img_coupon);
-        img_coupon.setImageResource(coupons[position].img_coupon);
+        ImageView img_coupon = viewCoupon.findViewById(R.id.img_coupon);
+        //img_coupon.setImageResource(coupons[position].img_coupon);
 
         TextView text_coupon = viewCoupon.findViewById(R.id.text_coupon);
-        text_coupon.setText(coupons[position].name_coupon);
+        //text_coupon.setText(coupons[position].name_coupon);
 
         return viewCoupon;
     }

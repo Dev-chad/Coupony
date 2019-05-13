@@ -11,24 +11,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ShopInfoActivity">
+        <activity android:name=".Activity.ShopInfoActivity">
 
         </activity>
-        <activity android:name=".ShopListActivity">
+        <activity android:name=".Activity.ShopListActivity">
+
+        </activity>
+        <activity android:name=".Activity.CouponListActivity" />
+        <activity android:name=".Activity.ShopCategoryActivity" />
+        <activity android:name=".Activity.ResetPasswordActivity" />
+        <activity android:name=".Activity.FindPasswordActivity" />
+        <activity android:name=".Activity.SignInActivity" />
+        <activity android:name=".Activity.SignUpActivity" />
+        <activity android:name=".Activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".CouponList" />
-        <activity android:name=".ShopCategory" />
-        <activity android:name=".ResetPassword" />
-        <activity android:name=".FindPassword" />
-        <activity android:name=".SignInActivity" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".SplashActivity">
-
         </activity>
     </application>
 

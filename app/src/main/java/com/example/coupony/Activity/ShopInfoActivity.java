@@ -1,10 +1,14 @@
-package com.example.coupony;
+package com.example.coupony.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.coupony.Data.Shop;
+import com.example.coupony.Data.User;
+import com.example.coupony.R;
 
 public class ShopInfoActivity extends AppCompatActivity {
 

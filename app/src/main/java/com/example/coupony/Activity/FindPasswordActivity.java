@@ -1,11 +1,13 @@
-package com.example.coupony;
+package com.example.coupony.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class FindPassword extends AppCompatActivity {
+import com.example.coupony.R;
+
+public class FindPasswordActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

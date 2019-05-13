@@ -1,4 +1,4 @@
-package com.example.coupony;
+package com.example.coupony.Data;
 
 import android.os.Parcel;
 import android.os.Parcelable;

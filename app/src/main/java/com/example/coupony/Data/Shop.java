@@ -1,4 +1,4 @@
-package com.example.coupony;
+package com.example.coupony.Data;
 
 import android.graphics.Bitmap;
 import android.os.Parcel;

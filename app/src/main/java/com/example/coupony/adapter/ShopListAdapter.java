@@ -1,18 +1,17 @@
-package com.example.coupony;
+package com.example.coupony.adapter;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
-import android.os.AsyncTask;
 import android.os.Handler;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.coupony.Data.Shop;
+import com.example.coupony.R;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -1,13 +1,14 @@
-package com.example.coupony;
+package com.example.coupony.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
 
-public class CouponList extends AppCompatActivity {
+import com.example.coupony.R;
+
+public class CouponListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,10 +18,10 @@ public class CouponList extends AppCompatActivity {
         LayoutInflater inflater = getLayoutInflater();
         View view_coupon = inflater.inflate(R.layout.view_coupon, null);
 
-        Coupon[] coupons = { new Coupon(R.drawable.a, "스타벅스"), new Coupon(R.drawable.b, "이디야"), new Coupon(R.drawable.c, "투썸플레이스"), new Coupon(R.drawable.d, "커피빈"), };
+       // Coupon[] coupons = { new Coupon(R.drawable.a, "스타벅스"), new Coupon(R.drawable.b, "이디야"), new Coupon(R.drawable.c, "투썸플레이스"), new Coupon(R.drawable.d, "커피빈"), };
 
         ListView couponListView = findViewById(R.id.list_coupon);
-        CustomAdapter_coupon adapter_coupon = new CustomAdapter_coupon(this, R.layout.view_coupon, coupons);
-        couponListView.setAdapter(adapter_coupon);
+        //CouponListAdapter adapter_coupon = new CouponListAdapter(this, R.layout.view_coupon, coupons);
+        //couponListView.setAdapter(adapter_coupon);
     }
 }

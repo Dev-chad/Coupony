@@ -1,9 +1,11 @@
-package com.example.coupony;
+package com.example.coupony.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ResetPassword extends AppCompatActivity {
+import com.example.coupony.R;
+
+public class ResetPasswordActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

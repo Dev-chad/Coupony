@@ -1,10 +1,6 @@
 package com.example.coupony.Utils;
 
 import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.Toast;
-
-import com.example.coupony.User;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,7 +9,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 
 public class HttpConnect extends AsyncTask<Void, Void, String> {
@@ -30,7 +25,6 @@ public class HttpConnect extends AsyncTask<Void, Void, String> {
 
     @Override
     protected String doInBackground(Void... unused) {
-
         /* 인풋 파라메터값 생성 */
 
         try {

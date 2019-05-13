@@ -1,4 +1,4 @@
-package com.example.coupony;
+package com.example.coupony.Activity;
 
 
 import android.content.Intent;
@@ -6,6 +6,8 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.example.coupony.R;
 
 
 public class SplashActivity extends AppCompatActivity {
@@ -15,11 +17,8 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-
-
-        Log.e("bsos1202","SplashActivity income!!");
-        Handler hd = new Handler();
-        hd.postDelayed(new Runnable() {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 Intent intent = new Intent(SplashActivity.this, SignInActivity.class);
@@ -27,14 +26,5 @@ public class SplashActivity extends AppCompatActivity {
                 finish();
             }
         }, 1000);
-
-        /*ImageView smileImg = findViewById(R.id.smile);
-        smileImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SplashActivity.this, SignInActivity.class);
-                startActivity(intent);
-            }
-        });*/
     }
 }

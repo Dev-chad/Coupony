@@ -1,24 +1,25 @@
-package com.example.coupony;
+package com.example.coupony.Activity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.location.Location;
-import android.location.LocationManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
+import com.example.coupony.Data.Shop;
+import com.example.coupony.Data.User;
 import com.example.coupony.R;
 import com.example.coupony.Utils.Constant;
 import com.example.coupony.Utils.HttpConnect;
 import com.example.coupony.Utils.HttpRequestCallback;
+import com.example.coupony.adapter.ShopListAdapter;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class ShopListActivity extends AppCompatActivity {
@@ -57,6 +58,25 @@ public class ShopListActivity extends AppCompatActivity {
         @Override
         public void callBack(String jsonResult) {
             Log.d("shopList", jsonResult);
+
+            try {
+                JSONObject jsonObject = new JSONObject(jsonResult);
+
+                if (jsonObject.getString("result").equals("ok")) {
+                    int count = jsonObject.getInt("count");
+                    JSONArray jsonShopList = jsonObject.getJSONArray("shop_list");
+
+                    ArrayList<Shop> shopList = new ArrayList<>();
+
+                    for (int i = 0; i < count; i++) {
+                        JSONObject jsonShopData = jsonShopList.getJSONObject(i);
+
+                        //Shop shop = new Shop(jsonObject.getInt("idx"), jsonShopData.getString("name"), jsonShopData.getString("address"), jsonShopData.getString("description"), jsonShopData.get)
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     };
 }
