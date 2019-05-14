@@ -1,9 +1,7 @@
 package com.example.coupony.Activity;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,8 +11,8 @@ import android.widget.Toast;
 import com.example.coupony.R;
 import com.example.coupony.Utils.Constant;
 import com.example.coupony.Utils.Encrypt;
-import com.example.coupony.Utils.HttpConnect;
-import com.example.coupony.Utils.HttpRequestCallback;
+import com.example.coupony.Connect.HttpConnect;
+import com.example.coupony.Connect.HttpRequestCallback;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -11,8 +11,8 @@ import com.example.coupony.Data.User;
 import com.example.coupony.R;
 import com.example.coupony.Utils.Constant;
 import com.example.coupony.Utils.Encrypt;
-import com.example.coupony.Utils.HttpConnect;
-import com.example.coupony.Utils.HttpRequestCallback;
+import com.example.coupony.Connect.HttpConnect;
+import com.example.coupony.Connect.HttpRequestCallback;
 
 import org.json.JSONException;
 import org.json.JSONObject;

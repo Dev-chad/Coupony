@@ -1,4 +1,4 @@
-package com.example.coupony.adapter;
+package com.example.coupony.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;

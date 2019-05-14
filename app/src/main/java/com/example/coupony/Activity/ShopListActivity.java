@@ -12,9 +12,9 @@ import com.example.coupony.Data.Shop;
 import com.example.coupony.Data.User;
 import com.example.coupony.R;
 import com.example.coupony.Utils.Constant;
-import com.example.coupony.Utils.HttpConnect;
-import com.example.coupony.Utils.HttpRequestCallback;
-import com.example.coupony.adapter.ShopListAdapter;
+import com.example.coupony.Connect.HttpConnect;
+import com.example.coupony.Connect.HttpRequestCallback;
+import com.example.coupony.Adapter.ShopListAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
