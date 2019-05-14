@@ -11,55 +11,59 @@
         android:orientation="horizontal">
 
         <TextView
-            android:textSize="20dp"
-            android:text="적립식 쿠폰"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"/>
+            android:gravity="center_vertical"
+            android:text="적립식 쿠폰"
+            android:textSize="20dp" />
+
         <Button
-            android:layout_margin="10dp"
-            android:text="바코드"
+            android:id="@+id/btn_saving_coupon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:layout_margin="10dp"
+            android:text="바코드" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <LinearLayout
-            android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
             <ImageView
-                android:alpha="0.3"
-                android:src="@drawable/smile_coupon"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="27dp"
-                />
-            <ImageView
                 android:alpha="0.3"
-                android:src="@drawable/smile_coupon"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="27dp"/>
-            <ImageView
-                android:alpha="0.3"
-                android:src="@drawable/smile_coupon"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="27dp"/>
+                android:src="@drawable/smile_coupon" />
 
             <ImageView
-                android:alpha="0.3"
-                android:src="@drawable/smile_coupon"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginRight="27dp"/>
+                android:layout_marginRight="27dp"
+                android:alpha="0.3"
+                android:src="@drawable/smile_coupon" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="27dp"
+                android:alpha="0.3"
+                android:src="@drawable/smile_coupon" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="27dp"
+                android:alpha="0.3"
+                android:src="@drawable/smile_coupon" />
 
             <ImageView
                 android:layout_width="50dp"
@@ -71,38 +75,43 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
             android:gravity="center_horizontal"
-            android:layout_marginBottom="10dp">
+            android:orientation="horizontal">
+
             <ImageView
-                android:alpha="0.3"
-                android:src="@drawable/smile_coupon"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginRight="27dp"/>
-            <ImageView
+                android:layout_marginRight="27dp"
                 android:alpha="0.3"
-                android:src="@drawable/smile_coupon"
+                android:src="@drawable/smile_coupon" />
+
+            <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginRight="27dp"/>
-            <ImageView
+                android:layout_marginRight="27dp"
                 android:alpha="0.3"
-                android:src="@drawable/smile_coupon"
+                android:src="@drawable/smile_coupon" />
+
+            <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginRight="27dp"/>
-            <ImageView
+                android:layout_marginRight="27dp"
                 android:alpha="0.3"
-                android:src="@drawable/smile_coupon"
+                android:src="@drawable/smile_coupon" />
+
+            <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginRight="27dp"/>
-            <ImageView
+                android:layout_marginRight="27dp"
                 android:alpha="0.3"
-                android:src="@drawable/smile_coupon"
+                android:src="@drawable/smile_coupon" />
+
+            <ImageView
                 android:layout_width="50dp"
-                android:layout_height="50dp" />
+                android:layout_height="50dp"
+                android:alpha="0.3"
+                android:src="@drawable/smile_coupon" />
         </LinearLayout>
 
     </LinearLayout>

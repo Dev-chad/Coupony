@@ -4,6 +4,7 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,6 +44,17 @@ public class ShopInfoActivity extends AppCompatActivity {
         TextView textViewOwnerName = findViewById(R.id.text_owner_name);
         TextView textViewBusinessNumber = findViewById(R.id.text_business_number);
 
+        findViewById(R.id.btn_coupon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent couponListIntent = new Intent(ShopInfoActivity.this, CouponListActivity.class);
+                couponListIntent.putExtra("user", user);
+                couponListIntent.putExtra("shop", shop);
+
+                startActivity(couponListIntent);
+            }
+        });
+
         textViewShopName.setText(shop.getName());
         textViewIntroduce.setText(shop.getDesc());
         textViewTime.setText(shop.getBusinessHour());
@@ -62,7 +74,7 @@ public class ShopInfoActivity extends AppCompatActivity {
                 });
             }
         }).start();*/
-        
+
         Glide.with(ShopInfoActivity.this).load(shop.getLogoUrl()).into(imageViewLogo);
         FragmentManager fragmentManager = getFragmentManager();
         MapFragment mapFragment = (MapFragment)fragmentManager.findFragmentById(R.id.map);
@@ -77,8 +89,8 @@ public class ShopInfoActivity extends AppCompatActivity {
             MarkerOptions markerOptions = new MarkerOptions();
             markerOptions.position(pos);
             markerOptions.snippet(shop.getName());
-            googleMap.addMarker(markerOptions.position(pos).title(shop.getName()));
 
+            googleMap.addMarker(markerOptions.position(pos).title(shop.getName()));
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(pos, 17));
         }
     };
