@@ -3,30 +3,43 @@ package com.example.coupony.Data;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class User implements Parcelable {
     private int idx;
-    private String userId;
+    private String id;
     private String name;
-    private boolean bShop;
+    private boolean bOwner;
     private boolean bSuper;
     private String status;
     private String businessNumber;
 
-    public User(int idx, String userId, String name, boolean bShop, boolean bSuper, String status, String businessNumber) {
+    public User(int idx, String id, String name, boolean bOwner, boolean bSuper, String status, String businessNumber) {
         this.idx = idx;
-        this.userId = userId;
+        this.id = id;
         this.name = name;
-        this.bShop = bShop;
+        this.bOwner = bOwner;
         this.bSuper = bSuper;
         this.status = status;
         this.businessNumber = businessNumber;
     }
 
+    public User(JSONObject jsonObject) throws JSONException {
+        idx = jsonObject.getInt("idx");
+        id = jsonObject.getString("id");
+        name = jsonObject.getString("name");
+        bOwner = jsonObject.getBoolean("has_shop");
+        bSuper = jsonObject.getBoolean("is_super");
+        status = jsonObject.getString("status");
+        businessNumber = jsonObject.getString("business_number");
+    }
+
     protected User(Parcel in) {
         idx = in.readInt();
-        userId = in.readString();
+        id = in.readString();
         name = in.readString();
-        bShop = in.readByte() != 0;
+        bOwner = in.readByte() != 0;
         bSuper = in.readByte() != 0;
         status = in.readString();
         businessNumber = in.readString();
@@ -35,9 +48,9 @@ public class User implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(idx);
-        dest.writeString(userId);
+        dest.writeString(id);
         dest.writeString(name);
-        dest.writeByte((byte) (bShop ? 1 : 0));
+        dest.writeByte((byte) (bOwner ? 1 : 0));
         dest.writeByte((byte) (bSuper ? 1 : 0));
         dest.writeString(status);
         dest.writeString(businessNumber);
@@ -64,8 +77,8 @@ public class User implements Parcelable {
         return idx;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getId() {
+        return id;
     }
 
     public String getName() {
@@ -76,12 +89,12 @@ public class User implements Parcelable {
         this.name = name;
     }
 
-    public boolean isbShop() {
-        return bShop;
+    public boolean isbOwner() {
+        return bOwner;
     }
 
-    public void setbShop(boolean bShop) {
-        this.bShop = bShop;
+    public void setbOwner(boolean bOwner) {
+        this.bOwner = bOwner;
     }
 
     public boolean isbSuper() {

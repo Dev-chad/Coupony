@@ -5,6 +5,10 @@ import android.os.Parcelable;
 
 import com.example.coupony.Utils.Constant;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Shop implements Parcelable {
     private int idx;
     private String name;
@@ -33,7 +37,25 @@ public class Shop implements Parcelable {
         this.businessHour = businessHour;
         this.closedDay = closedDay;
         this.status = status;
-        this.logoUrl = Constant.SERVER_ADDRESS+"/image/logo/logo_" + idx + ".png";
+        this.logoUrl = Constant.SERVER_ADDRESS + "/image/logo/logo_" + idx + ".png";
+    }
+
+    public Shop(JSONObject jsonObject) throws JSONException {
+        idx = jsonObject.getInt("idx");
+        name = jsonObject.getString("name");
+        address = jsonObject.getString("address");
+        latitude = jsonObject.getDouble("latitude");
+        longitude = jsonObject.getDouble("longitude");
+        phone = jsonObject.getString("phone");
+        desc = jsonObject.getString("description");
+        category = jsonObject.getString("category");
+        businessHour = jsonObject.getString("business_hour");
+        closedDay = jsonObject.getString("closed_day");
+        status = jsonObject.getString("status");
+        logoUrl = Constant.SERVER_ADDRESS + "/image/logo/logo_" + idx + ".png";
+
+        JSONObject jsonOwnerData = jsonObject.getJSONObject("owner");
+        owner = new User(jsonOwnerData);
     }
 
 

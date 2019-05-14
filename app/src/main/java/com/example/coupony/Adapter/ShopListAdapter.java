@@ -72,6 +72,4 @@ public class ShopListAdapter extends BaseAdapter {
 
         return view;
     }
-
-
 }

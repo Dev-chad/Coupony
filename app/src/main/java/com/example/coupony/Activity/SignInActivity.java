@@ -69,13 +69,10 @@ public class SignInActivity extends AppCompatActivity {
                 String result = jsonObject.getString("result");
                 if (result.equals("ok")) {
                     JSONObject userObj = jsonObject.getJSONObject("user_data");
-
-                    User user = new User(userObj.getInt("idx"), userObj.getString("id"),
-                            userObj.getString("name"), userObj.getBoolean("has_shop"),
-                            userObj.getBoolean("is_super"), userObj.getString("status"), userObj.getString("business_number"));
+                    User user = new User(userObj);
 
                     Intent intent = new Intent(SignInActivity.this, ShopCategoryActivity.class);
-                    intent.putExtra("user_idx", user);
+                    intent.putExtra("user", user);
                     startActivity(intent);
                 }
             } catch (JSONException e) {

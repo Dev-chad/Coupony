@@ -4,50 +4,61 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.coupony.Activity.CouponListActivity;
 import com.example.coupony.Data.Coupon;
 import com.example.coupony.R;
+import com.example.coupony.Utils.Constant;
+
+import java.util.ArrayList;
 
 public class CouponListAdapter extends BaseAdapter {
-    CouponListActivity couponListActivity;
-    int layout;
-    Coupon[] coupons;
+    private CouponListActivity couponListActivity;
+    private int layout;
+    private ArrayList<Coupon> couponList;
 
-    CouponListAdapter(CouponListActivity couponListActivity, int layout, Coupon[] coupons) {
+    public CouponListAdapter(CouponListActivity couponListActivity, int layout, ArrayList<Coupon> couponList) {
         this.couponListActivity = couponListActivity;
         this.layout = layout;
-        this.coupons = coupons;
+        this.couponList = couponList;
     }
 
     @Override
     public int getCount() {
-        return coupons.length;
+        return couponList.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return couponList.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = couponListActivity.getLayoutInflater();
-        View viewCoupon = inflater.inflate(layout, null);
+        View view = inflater.inflate(layout, null);
 
-        ImageView img_coupon = viewCoupon.findViewById(R.id.img_coupon);
-        //img_coupon.setImageResource(coupons[position].img_coupon);
+        Coupon coupon = couponList.get(position);
 
-        TextView text_coupon = viewCoupon.findViewById(R.id.text_coupon);
-        //text_coupon.setText(coupons[position].name_coupon);
+        ImageView imgCoupon = view.findViewById(R.id.img_coupon);
+        TextView textCouponName = view.findViewById(R.id.text_coupon);
+        Button btnCoupon = view.findViewById(R.id.btn_coupon);
 
-        return viewCoupon;
+        String logoUrl = Constant.SERVER_ADDRESS+"/image/logo/logo_" + coupon.getShopIdx() + ".png";
+
+        Glide.with(couponListActivity).load(logoUrl).into(imgCoupon);
+        textCouponName.setText(coupon.getName());
+
+        return view;
     }
 
-    @Override
-    public Object getItem(int position) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
 }

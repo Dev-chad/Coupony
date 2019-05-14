@@ -39,7 +39,6 @@ public class ShopListActivity extends AppCompatActivity {
         final ListView listViewShop = findViewById(R.id.list_shop);
 
         shopList = new ArrayList<>();
-
         adapter = new ShopListAdapter(this, R.layout.listview_shop, shopList);
 
         listViewShop.setAdapter(adapter);
@@ -76,12 +75,7 @@ public class ShopListActivity extends AppCompatActivity {
 
                     for (int i = 0; i < count; i++) {
                         JSONObject jsonShopData = jsonShopList.getJSONObject(i);
-                        JSONObject jsonOwnerData = jsonShopData.getJSONObject("owner");
-
-                        User owner = new User(jsonOwnerData.getInt("idx"), jsonOwnerData.getString("id"), jsonOwnerData.getString("name"), jsonOwnerData.getBoolean("has_shop"), jsonOwnerData.getBoolean("is_super"), jsonOwnerData.getString("status"), jsonOwnerData.getString("business_number"));
-                        Shop shop = new Shop(jsonShopData.getInt("idx"), jsonShopData.getString("name"), jsonShopData.getString("address"), jsonShopData.getDouble("latitude"), jsonShopData.getDouble("longitude"), jsonShopData.getString("phone"), jsonShopData.getString("description"), owner, jsonShopData.getString("category"), jsonShopData.getString("business_hour"), jsonShopData.getString("closed_day"), jsonShopData.getString("status"));
-
-                        shop.setOwner(owner);
+                        Shop shop = new Shop(jsonShopData);
                         shopList.add(shop);
                     }
 
