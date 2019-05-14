@@ -1,6 +1,7 @@
 package com.example.coupony.Activity;
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -32,7 +33,7 @@ public class ShopInfoActivity extends AppCompatActivity {
         TextView textViewOwnerName = findViewById(R.id.text_owner_name);
         TextView textViewBusinessNumber = findViewById(R.id.text_business_number);
 
-        imageViewLogo.setImageBitmap(shop.getLogo());
+        imageViewLogo.setImageBitmap(BitmapFactory.decodeByteArray(shop.getLogo(), 0, shop.getLogo().length));
         textViewShopName.setText(shop.getName());
         textViewIntroduce.setText(shop.getDesc());
         textViewTime.setText(shop.getBusinessHour());

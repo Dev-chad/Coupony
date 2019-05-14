@@ -1,6 +1,7 @@
 package com.example.coupony.adapter;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.example.coupony.Data.Shop;
 import com.example.coupony.R;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -64,7 +66,7 @@ public class ShopListAdapter extends BaseAdapter {
         if (shop.getLogoUrl().isEmpty()) {
             imageLogo.setImageResource(R.drawable.smile);
         } else if(shop.getLogo() != null){
-            imageLogo.setImageBitmap(shop.getLogo());
+            imageLogo.setImageBitmap(BitmapFactory.decodeByteArray(shop.getLogo(), 0, shop.getLogo().length));
         }else {
 
             final Handler handler = new Handler();
@@ -80,12 +82,16 @@ public class ShopListAdapter extends BaseAdapter {
                         connect.connect();
 
                         InputStream is = connect.getInputStream();
-                        shop.setLogo(BitmapFactory.decodeStream(is));
+                        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+                        Bitmap bmp = BitmapFactory.decodeStream(is);
+                        bmp.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+                        shop.setLogo(outputStream.toByteArray());
 
                         handler.post(new Runnable() {
                             @Override
                             public void run() {
-                                imageLogo.setImageBitmap(shop.getLogo());
+                                imageLogo.setImageBitmap(BitmapFactory.decodeByteArray(shop.getLogo(), 0, shop.getLogo().length));
                             }
                         });
 

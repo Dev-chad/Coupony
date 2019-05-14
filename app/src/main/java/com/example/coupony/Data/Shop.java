@@ -4,6 +4,8 @@ import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.example.coupony.Utils.Constant;
+
 public class Shop implements Parcelable {
     private int idx;
     private String name;
@@ -16,9 +18,9 @@ public class Shop implements Parcelable {
     private String closedDay;
     private String status;
     private String logoUrl;
-    private Bitmap logo;
+    private byte[] logo;
 
-    public Shop(int idx, String name, String address, String phone, String desc, User owner, String category, String businessHour, String closedDay, String status, String logoUrl) {
+    public Shop(int idx, String name, String address, String phone, String desc, User owner, String category, String businessHour, String closedDay, String status) {
         this.idx = idx;
         this.name = name;
         this.address = address;
@@ -29,8 +31,9 @@ public class Shop implements Parcelable {
         this.businessHour = businessHour;
         this.closedDay = closedDay;
         this.status = status;
-        this.logoUrl = logoUrl;
+        this.logoUrl = Constant.SERVER_ADDRESS+"/image/logo/logo_" + idx + ".png";
     }
+
 
     protected Shop(Parcel in) {
         idx = in.readInt();
@@ -44,7 +47,7 @@ public class Shop implements Parcelable {
         closedDay = in.readString();
         status = in.readString();
         logoUrl = in.readString();
-        logo = in.readParcelable(Bitmap.class.getClassLoader());
+        logo = in.createByteArray();
     }
 
     @Override
@@ -60,7 +63,7 @@ public class Shop implements Parcelable {
         dest.writeString(closedDay);
         dest.writeString(status);
         dest.writeString(logoUrl);
-        dest.writeParcelable(logo, flags);
+        dest.writeByteArray(logo);
     }
 
     @Override
@@ -168,11 +171,11 @@ public class Shop implements Parcelable {
         this.logoUrl = logoUrl;
     }
 
-    public Bitmap getLogo() {
+    public byte[] getLogo() {
         return logo;
     }
 
-    public void setLogo(Bitmap logo) {
+    public void setLogo(byte[] logo) {
         this.logo = logo;
     }
 }
