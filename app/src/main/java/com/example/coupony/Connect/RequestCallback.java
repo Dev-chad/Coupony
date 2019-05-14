@@ -1,5 +1,7 @@
 package com.example.coupony.Connect;
 
-public interface HttpRequestCallback {
+import android.graphics.Bitmap;
+
+public interface RequestCallback {
     void callBack(String jsonResult);
 }

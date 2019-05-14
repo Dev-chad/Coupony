@@ -13,7 +13,7 @@ import com.example.coupony.Data.User;
 import com.example.coupony.R;
 import com.example.coupony.Utils.Constant;
 import com.example.coupony.Connect.HttpConnect;
-import com.example.coupony.Connect.HttpRequestCallback;
+import com.example.coupony.Connect.RequestCallback;
 import com.example.coupony.Adapter.ShopListAdapter;
 
 import org.json.JSONArray;
@@ -60,7 +60,7 @@ public class ShopListActivity extends AppCompatActivity {
         httpConnect.execute();
     }
 
-    HttpRequestCallback requestCallback = new HttpRequestCallback() {
+    RequestCallback requestCallback = new RequestCallback() {
         @Override
         public void callBack(String jsonResult) {
             Log.d("shopList", jsonResult);
@@ -79,11 +79,11 @@ public class ShopListActivity extends AppCompatActivity {
                         JSONObject jsonOwnerData = jsonShopData.getJSONObject("owner");
 
                         User owner = new User(jsonOwnerData.getInt("idx"), jsonOwnerData.getString("id"), jsonOwnerData.getString("name"), jsonOwnerData.getBoolean("has_shop"), jsonOwnerData.getBoolean("is_super"), jsonOwnerData.getString("status"), jsonOwnerData.getString("business_number"));
-                        Shop shop = new Shop(jsonShopData.getInt("idx"), jsonShopData.getString("name"), jsonShopData.getString("address"), jsonShopData.getString("phone"), jsonShopData.getString("description"), owner, jsonShopData.getString("category"), jsonShopData.getString("business_hour"), jsonShopData.getString("closed_day"), jsonShopData.getString("status"));
+                        Shop shop = new Shop(jsonShopData.getInt("idx"), jsonShopData.getString("name"), jsonShopData.getString("address"), jsonShopData.getDouble("latitude"), jsonShopData.getDouble("longitude"), jsonShopData.getString("phone"), jsonShopData.getString("description"), owner, jsonShopData.getString("category"), jsonShopData.getString("business_hour"), jsonShopData.getString("closed_day"), jsonShopData.getString("status"));
 
+                        shop.setOwner(owner);
                         shopList.add(shop);
                     }
-
 
                     adapter.notifyDataSetChanged();
                 }

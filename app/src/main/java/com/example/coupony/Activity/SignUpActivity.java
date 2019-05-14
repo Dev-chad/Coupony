@@ -12,7 +12,7 @@ import com.example.coupony.R;
 import com.example.coupony.Utils.Constant;
 import com.example.coupony.Utils.Encrypt;
 import com.example.coupony.Connect.HttpConnect;
-import com.example.coupony.Connect.HttpRequestCallback;
+import com.example.coupony.Connect.RequestCallback;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -58,14 +58,14 @@ public class SignUpActivity extends AppCompatActivity {
                 } else {
                     String param = "id=" + id + "&name=" + name + "&password=" + Encrypt.getSHA256(password);
 
-                    HttpConnect httpConnect = new HttpConnect(param, Constant.SERVER_SIGNUP_ADDRESS, httpRequestCallback);
+                    HttpConnect httpConnect = new HttpConnect(param, Constant.SERVER_SIGNUP_ADDRESS, requestCallback);
                     httpConnect.execute();
                 }
             }
         });
     }
 
-    HttpRequestCallback httpRequestCallback = new HttpRequestCallback() {
+    RequestCallback requestCallback = new RequestCallback() {
         @Override
         public void callBack(String jsonResult) {
             Log.d("result", jsonResult);
@@ -76,7 +76,6 @@ public class SignUpActivity extends AppCompatActivity {
                 String result = jsonObject.getString("result");
                 if(result.equals("ok")){
                     finish();
-
                 } else {
                     Toast.makeText(SignUpActivity.this, "error", Toast.LENGTH_SHORT).show();
                 }

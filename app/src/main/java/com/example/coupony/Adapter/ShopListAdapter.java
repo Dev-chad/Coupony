@@ -11,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.coupony.Data.Shop;
 import com.example.coupony.R;
 
@@ -65,45 +66,8 @@ public class ShopListAdapter extends BaseAdapter {
 
         if (shop.getLogoUrl().isEmpty()) {
             imageLogo.setImageResource(R.drawable.smile);
-        } else if(shop.getLogo() != null){
-            imageLogo.setImageBitmap(BitmapFactory.decodeByteArray(shop.getLogo(), 0, shop.getLogo().length));
-        }else {
-
-            final Handler handler = new Handler();
-
-            Thread imageLoadThread = new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        URL url = new URL(shop.getLogoUrl());
-
-                        HttpURLConnection connect = (HttpURLConnection) url.openConnection();
-                        connect.setDoInput(true);
-                        connect.connect();
-
-                        InputStream is = connect.getInputStream();
-                        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-
-                        Bitmap bmp = BitmapFactory.decodeStream(is);
-                        bmp.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
-                        shop.setLogo(outputStream.toByteArray());
-
-                        handler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                imageLogo.setImageBitmap(BitmapFactory.decodeByteArray(shop.getLogo(), 0, shop.getLogo().length));
-                            }
-                        });
-
-                    } catch (MalformedURLException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            };
-
-            imageLoadThread.start();
+        } else {
+            Glide.with(view).load(shop.getLogoUrl()).into(imageLogo);
         }
 
         return view;

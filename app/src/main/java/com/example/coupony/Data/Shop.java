@@ -9,6 +9,8 @@ public class Shop implements Parcelable {
     private int idx;
     private String name;
     private String address;
+    private double latitude;
+    private double longitude;
     private String phone;
     private String desc;
     private User owner;
@@ -17,12 +19,13 @@ public class Shop implements Parcelable {
     private String closedDay;
     private String status;
     private String logoUrl;
-    private byte[] logo;
 
-    public Shop(int idx, String name, String address, String phone, String desc, User owner, String category, String businessHour, String closedDay, String status) {
+    public Shop(int idx, String name, String address, double latitude, double longitude, String phone, String desc, User owner, String category, String businessHour, String closedDay, String status) {
         this.idx = idx;
         this.name = name;
         this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.phone = phone;
         this.desc = desc;
         this.owner = owner;
@@ -38,6 +41,8 @@ public class Shop implements Parcelable {
         idx = in.readInt();
         name = in.readString();
         address = in.readString();
+        latitude = in.readDouble();
+        longitude = in.readDouble();
         phone = in.readString();
         desc = in.readString();
         owner = in.readParcelable(User.class.getClassLoader());
@@ -46,7 +51,6 @@ public class Shop implements Parcelable {
         closedDay = in.readString();
         status = in.readString();
         logoUrl = in.readString();
-        logo = in.createByteArray();
     }
 
     @Override
@@ -54,6 +58,8 @@ public class Shop implements Parcelable {
         dest.writeInt(idx);
         dest.writeString(name);
         dest.writeString(address);
+        dest.writeDouble(latitude);
+        dest.writeDouble(longitude);
         dest.writeString(phone);
         dest.writeString(desc);
         dest.writeParcelable(owner, flags);
@@ -62,7 +68,6 @@ public class Shop implements Parcelable {
         dest.writeString(closedDay);
         dest.writeString(status);
         dest.writeString(logoUrl);
-        dest.writeByteArray(logo);
     }
 
     @Override
@@ -170,11 +175,19 @@ public class Shop implements Parcelable {
         this.logoUrl = logoUrl;
     }
 
-    public byte[] getLogo() {
-        return logo;
+    public double getLatitude() {
+        return latitude;
     }
 
-    public void setLogo(byte[] logo) {
-        this.logo = logo;
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 }

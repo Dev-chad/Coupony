@@ -12,7 +12,7 @@ import com.example.coupony.R;
 import com.example.coupony.Utils.Constant;
 import com.example.coupony.Utils.Encrypt;
 import com.example.coupony.Connect.HttpConnect;
-import com.example.coupony.Connect.HttpRequestCallback;
+import com.example.coupony.Connect.RequestCallback;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,7 +35,7 @@ public class SignInActivity extends AppCompatActivity {
                 //String password = editText2.getText().toString();
                 String param = "id=" + id + "&password=" + password;
 
-                HttpConnect httpConnect = new HttpConnect(param, Constant.SERVER_LOGIN_ADDRESS, httpRequestCallback);
+                HttpConnect httpConnect = new HttpConnect(param, Constant.SERVER_LOGIN_ADDRESS, requestCallback);
                 httpConnect.execute();
             }
         });
@@ -58,7 +58,7 @@ public class SignInActivity extends AppCompatActivity {
 
     }
 
-    HttpRequestCallback httpRequestCallback = new HttpRequestCallback() {
+    RequestCallback requestCallback = new RequestCallback() {
         @Override
         public void callBack(String jsonResult) {
             Log.d("result", jsonResult);
@@ -75,7 +75,7 @@ public class SignInActivity extends AppCompatActivity {
                             userObj.getBoolean("is_super"), userObj.getString("status"), userObj.getString("business_number"));
 
                     Intent intent = new Intent(SignInActivity.this, ShopCategoryActivity.class);
-                    intent.putExtra("user", user);
+                    intent.putExtra("user_idx", user);
                     startActivity(intent);
                 }
             } catch (JSONException e) {

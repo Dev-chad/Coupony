@@ -15,9 +15,9 @@ public class HttpConnect extends AsyncTask<Void, Void, String> {
 
     private String param;
     private String url;
-    private HttpRequestCallback requestCallback;
+    private RequestCallback requestCallback;
 
-    public HttpConnect(String param, String url, HttpRequestCallback requestCallback){
+    public HttpConnect(String param, String url, RequestCallback requestCallback){
         this.param = param;
         this.url = url;
         this.requestCallback = requestCallback;
