@@ -29,6 +29,7 @@ public class ShopListActivity extends AppCompatActivity {
 
     private ArrayList<Shop> shopList;
     private ShopListAdapter adapter;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class ShopListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_shop_list);
 
         Intent intent = getIntent();
-        final User user = intent.getParcelableExtra("user");
+        user = intent.getParcelableExtra("user");
         String category = intent.getStringExtra("category");
 
         final ListView listViewShop = findViewById(R.id.list_shop);
@@ -66,6 +67,10 @@ public class ShopListActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.optionmenu, menu);
+        MenuItem menuscan = menu.findItem(R.id.menu_scan);
+        if (user.isbOwner()){
+            menuscan.setVisible(true);
+        }
         return true;
     }
 
@@ -73,10 +78,12 @@ public class ShopListActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.menu_userpage:
                 Intent userintent = new Intent(ShopListActivity.this, UserPageActivity.class);
+                userintent.putExtra("user", user);
                 startActivity(userintent);
                 break;
             case R.id.menu_scan:
                 Intent scanintent = new Intent(ShopListActivity.this, QRScannerActivity.class);  // 쿠폰 스캔하기로 바꾸기
+                scanintent.putExtra("user", user);
                 startActivity(scanintent);
                 break;
         }

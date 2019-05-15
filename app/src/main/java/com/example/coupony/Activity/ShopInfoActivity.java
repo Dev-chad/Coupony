@@ -90,6 +90,10 @@ public class ShopInfoActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.optionmenu, menu);
+        MenuItem menuscan = menu.findItem(R.id.menu_scan);
+        if (user.isbOwner()){
+            menuscan.setVisible(true);
+        }
         return true;
     }
 
@@ -97,10 +101,12 @@ public class ShopInfoActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menu_userpage:
                 Intent userintent = new Intent(ShopInfoActivity.this, UserPageActivity.class);
+                userintent.putExtra("user", user);
                 startActivity(userintent);
                 break;
             case R.id.menu_scan:
                 Intent scanintent = new Intent(ShopInfoActivity.this, QRScannerActivity.class);  // 쿠폰 스캔하기로 바꾸기
+                scanintent.putExtra("user", user);
                 startActivity(scanintent);
                 break;
         }

@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -77,6 +80,26 @@ public class CouponListActivity extends AppCompatActivity {
 
         HttpConnect httpConnect = new HttpConnect(param, Constant.SERVER_GETCOUPONLIST_ADDRESS, requestCallback);
         httpConnect.execute();
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.optionmenu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_userpage:
+                Intent userintent = new Intent(CouponListActivity.this, UserPageActivity.class);
+                startActivity(userintent);
+                break;
+            case R.id.menu_scan:
+                Intent scanintent = new Intent(CouponListActivity.this, UserPageActivity.class);  // 쿠폰 스캔하기로 바꾸기
+                startActivity(scanintent);
+                break;
+        }
+        return true;
     }
 
     RequestCallback requestCallback = new RequestCallback() {
