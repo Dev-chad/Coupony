@@ -3,6 +3,9 @@ package com.example.coupony.Data;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Coupon implements Parcelable {
 
     private int idx;
@@ -10,6 +13,7 @@ public class Coupon implements Parcelable {
     private String description;
     private int shopIdx;
     private int ownerIdx;
+    private int count;
     private String type;
     private String startDate;
     private String endDate;
@@ -27,12 +31,26 @@ public class Coupon implements Parcelable {
         this.status = status;
     }
 
+    public Coupon(JSONObject jsonObject) throws JSONException {
+        idx = jsonObject.getInt("idx");
+        name = jsonObject.getString("name");
+        description = jsonObject.getString("description");
+        shopIdx = jsonObject.getInt("shop_idx");
+        ownerIdx = jsonObject.getInt("owner_idx");
+        type = jsonObject.getString("type");
+        startDate = jsonObject.getString("start_date");
+        endDate = jsonObject.getString("end_date");
+        status = jsonObject.getString("status");
+    }
+
+
     protected Coupon(Parcel in) {
         idx = in.readInt();
         name = in.readString();
         description = in.readString();
         shopIdx = in.readInt();
         ownerIdx = in.readInt();
+        count = in.readInt();
         type = in.readString();
         startDate = in.readString();
         endDate = in.readString();
@@ -46,6 +64,7 @@ public class Coupon implements Parcelable {
         dest.writeString(description);
         dest.writeInt(shopIdx);
         dest.writeInt(ownerIdx);
+        dest.writeInt(count);
         dest.writeString(type);
         dest.writeString(startDate);
         dest.writeString(endDate);
@@ -139,5 +158,13 @@ public class Coupon implements Parcelable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 }

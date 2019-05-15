@@ -25,10 +25,25 @@
             android:text="바코드" />
     </LinearLayout>
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/text_make_saving_coupon"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="110dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@android:color/darker_gray"
+        android:gravity="center"
+        android:text="Touch here to make coupon!"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/layout_saving_coupon"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical"
+        android:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,6 +53,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/img_saving1"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="27dp"
@@ -45,6 +61,7 @@
                 android:src="@drawable/smile_coupon" />
 
             <ImageView
+                android:id="@+id/img_saving2"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="27dp"
@@ -52,6 +69,7 @@
                 android:src="@drawable/smile_coupon" />
 
             <ImageView
+                android:id="@+id/img_saving3"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="27dp"
@@ -59,6 +77,8 @@
                 android:src="@drawable/smile_coupon" />
 
             <ImageView
+                android:id="@+id/img_saving4"
+
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="27dp"
@@ -66,6 +86,8 @@
                 android:src="@drawable/smile_coupon" />
 
             <ImageView
+                android:id="@+id/img_saving5"
+
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:alpha="0.3"
@@ -75,11 +97,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:gravity="center_horizontal"
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/img_saving6"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="27dp"
@@ -87,6 +109,7 @@
                 android:src="@drawable/smile_coupon" />
 
             <ImageView
+                android:id="@+id/img_saving7"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="27dp"
@@ -94,6 +117,8 @@
                 android:src="@drawable/smile_coupon" />
 
             <ImageView
+                android:id="@+id/img_saving8"
+
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="27dp"
@@ -101,6 +126,8 @@
                 android:src="@drawable/smile_coupon" />
 
             <ImageView
+                android:id="@+id/img_saving9"
+
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="27dp"
@@ -108,6 +135,8 @@
                 android:src="@drawable/smile_coupon" />
 
             <ImageView
+                android:id="@+id/img_saving10"
+
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:alpha="0.3"
@@ -118,7 +147,6 @@
     <ListView
         android:id="@+id/list_using_coupon"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </ListView>
+        android:layout_height="match_parent"></ListView>
 
 </LinearLayout>

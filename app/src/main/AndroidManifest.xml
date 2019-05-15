@@ -29,13 +29,15 @@
         <activity android:name=".Activity.FindPasswordActivity" />
         <activity android:name=".Activity.SignInActivity" />
         <activity android:name=".Activity.SignUpActivity" />
-        <activity android:name=".Activity.SplashActivity" />
-        <activity android:name=".Activity.UserPageActivity">
+        <activity android:name=".Activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Activity.UserPageActivity">
+
         </activity>
     </application>
 
