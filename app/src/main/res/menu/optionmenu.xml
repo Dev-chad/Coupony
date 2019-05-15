@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_userpage"
+        android:orderInCategory="100"
+        android:title="마이 페이지" />
+
+    <item
+        android:visible="false"
+        android:id="@+id/menu_scan"
+        android:orderInCategory="100"
+        android:title="쿠폰 스캔하기" />
+
+</menu>

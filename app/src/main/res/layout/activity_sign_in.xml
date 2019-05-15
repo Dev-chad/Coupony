@@ -69,23 +69,6 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sign in with Google" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sign in with Naver" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sign in with Kakao" />
-
         <LinearLayout
             android:id="@+id/layout_sign_up"
             android:layout_width="wrap_content"
