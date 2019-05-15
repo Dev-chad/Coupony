@@ -21,6 +21,7 @@ import com.example.coupony.Data.User;
 import com.example.coupony.R;
 import com.example.coupony.Utils.Constant;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -35,6 +36,8 @@ public class CouponListActivity extends AppCompatActivity {
     private ArrayList<Coupon> couponList;
     private TextView textViewMakeCoupon;
     private LinearLayout layoutSavingCoupon;
+    private CouponListAdapter couponListAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +53,7 @@ public class CouponListActivity extends AppCompatActivity {
         couponList = new ArrayList<>();
 
         ListView usingCouponList = findViewById(R.id.list_using_coupon);
-        CouponListAdapter couponListAdapter = new CouponListAdapter(this, R.layout.view_coupon, couponList);
+        couponListAdapter = new CouponListAdapter(this, R.layout.view_coupon, couponList);
         usingCouponList.setAdapter(couponListAdapter);
 
         findViewById(R.id.btn_saving_coupon).setOnClickListener(new View.OnClickListener() {
@@ -103,6 +106,17 @@ public class CouponListActivity extends AppCompatActivity {
                                 }
                             }
                         }
+
+                        couponList.clear();
+
+                        int usingCouponCount = jsonObject.getInt("using_coupon_count");
+                        JSONArray usingCouponArray = jsonObject.getJSONArray("using_coupon_list");
+
+                        for(int i=0; i<usingCouponCount; i++){
+                            couponList.add(new Coupon(usingCouponArray.getJSONObject(i)));
+                        }
+
+                        couponListAdapter.notifyDataSetChanged();
                     }
                 } else {
                     if(jsonObject.getString("result").equals("ok")){
