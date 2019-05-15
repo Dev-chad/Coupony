@@ -8,5 +8,7 @@ public class Constant {
     final public static String SERVER_GETSHOPLIST_ADDRESS = SERVER_ADDRESS+"/getShopList.php";
     final public static String SERVER_GETCOUPONLIST_ADDRESS = SERVER_ADDRESS + "/getCouponList.php";
     final public static String SERVER_MAKECOUPON_ADDRESS = SERVER_ADDRESS + "/makeCoupon.php";
+    final public static String SERVER_USING_COUPON_ADDRESS = SERVER_ADDRESS + "/usingCoupon.php";
+
 
 }

@@ -25,15 +25,15 @@ public class UserPageActivity extends AppCompatActivity {
 
         ListView userlistView = findViewById(R.id.list_user);
         ListView ownerlistView = findViewById(R.id.list_owner);
+        ListView logoutlistView = findViewById(R.id.list_logout);
 
-        if (user.isbOwner()) {
+       if (user.isbOwner()) {
             ownerlistView.setVisibility(View.VISIBLE);
-        } else {
-            ownerlistView.setVisibility(View.INVISIBLE);
         }
 
-        final String[] userlist = {"개인 정보", "비밀번호 변경", "쿠폰함", "즐겨찾는 매장", "로그아웃"};
+        final String[] userlist = {"개인 정보", "비밀번호 변경", "쿠폰함", "즐겨찾는 매장"};
         final String[] ownerlist = {"매장 정보", "쿠폰 발급하기", "정보 수정 요청", "임시 운영 중지"};
+        final String[] logoutlist = {"로그 아웃"};
 
         ArrayAdapter<String> useradapter =
                 new ArrayAdapter<>(
@@ -44,6 +44,10 @@ public class UserPageActivity extends AppCompatActivity {
                 new ArrayAdapter<>(
                         this, android.R.layout.simple_list_item_1, ownerlist);
         ownerlistView.setAdapter(owneradapter);
+        ArrayAdapter<String> logoutadapter =
+                new ArrayAdapter<>(
+                        this, android.R.layout.simple_list_item_1, logoutlist);
+        logoutlistView.setAdapter(logoutadapter);
 
 
         userlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -58,6 +62,14 @@ public class UserPageActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String title = ownerlist[position];
+                Intent intent = new Intent(UserPageActivity.this, ShopListActivity.class);      // ShopListActivity.class 바꾸기!
+                startActivity(intent);
+            }
+        });
+        logoutlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String title = logoutlist[position];
                 Intent intent = new Intent(UserPageActivity.this, ShopListActivity.class);      // ShopListActivity.class 바꾸기!
                 startActivity(intent);
             }
