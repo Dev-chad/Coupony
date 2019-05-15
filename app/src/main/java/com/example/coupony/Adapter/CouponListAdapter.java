@@ -55,8 +55,7 @@ public class CouponListAdapter extends BaseAdapter {
 
         String logoUrl = Constant.SERVER_ADDRESS+"/image/logo/logo_" + coupon.getShopIdx() + ".png";
 
-        //Glide.with(couponListActivity).load(logoUrl).into(imgCoupon);
-        Glide.with(couponListActivity).load("https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=Hello%20world&choe=UTF-8").into(imgCoupon);
+        Glide.with(couponListActivity).load(logoUrl).into(imgCoupon);
 
         textCouponName.setText(coupon.getName());
 
