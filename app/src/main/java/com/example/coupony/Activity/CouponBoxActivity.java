@@ -22,7 +22,9 @@ public class CouponBoxActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coupon_box);
 
-        LayoutInflater inflater = getLayoutInflater();
+
+
+       LayoutInflater inflater = getLayoutInflater();
         View view_coupon = inflater.inflate(R.layout.view_coupon, null);
 
         datas = new ArrayList<>();

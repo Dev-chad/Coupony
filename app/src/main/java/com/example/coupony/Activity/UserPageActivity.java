@@ -37,7 +37,7 @@ public class UserPageActivity extends AppCompatActivity {
         }
 
         final String[] userlist = {"개인 정보", "비밀번호 변경", "쿠폰함", "즐겨찾는 매장"};
-        final String[] ownerlist = {"매장 정보", "쿠폰 발급하기", "정보 수정 요청", "임시 운영 중지"};
+        final String[] ownerlist = {"매장 정보", "쿠폰 발급하기", "정보 수정 요청", "임시 운영 중지", "매장 등록 신청 현황"};
         final String[] logoutlist = {"로그 아웃"};
 
         ArrayAdapter<String> useradapter =
@@ -67,7 +67,14 @@ public class UserPageActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String title = ownerlist[position];
-                Intent intent = new Intent(UserPageActivity.this, ShopListActivity.class);      // ShopListActivity.class 바꾸기!
+                Intent intent;
+                /*if (title.equals((4))){
+                    intent = new Intent(UserPageActivity.this, ShopRegisterMangerActivity.class);
+                }else{
+                    intent = new Intent(UserPageActivity.this, ShopListActivity.class);      // ShopListActivity.class 바꾸기!
+                }
+                */
+                intent = new Intent(UserPageActivity.this, ShopRegisterMangerActivity.class);
                 startActivity(intent);
             }
         });
@@ -75,6 +82,7 @@ public class UserPageActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String title = logoutlist[position];
+
                 Intent intent = new Intent(UserPageActivity.this, ShopListActivity.class);      // ShopListActivity.class 바꾸기!
                 startActivity(intent);
             }
