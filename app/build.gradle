@@ -32,6 +32,4 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:16.0.0'
     implementation 'com.journeyapps:zxing-android-embedded:3.4.0'
     implementation files('libs/gradle-wrapper.jar')
-
-    compile 'com.journeyapps:zxing-android-embedded:3.4.0'
 }
