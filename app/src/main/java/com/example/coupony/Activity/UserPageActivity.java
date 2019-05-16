@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.coupony.Data.User;
 import com.example.coupony.R;
@@ -23,9 +24,13 @@ public class UserPageActivity extends AppCompatActivity {
         Intent intent = getIntent();
         User user = intent.getParcelableExtra("user");
 
+
+        TextView text_username = findViewById(R.id.text_username);
         ListView userlistView = findViewById(R.id.list_user);
         ListView ownerlistView = findViewById(R.id.list_owner);
         ListView logoutlistView = findViewById(R.id.list_logout);
+
+        text_username.setText(user.getName());
 
        if (user.isbOwner()) {
             ownerlistView.setVisibility(View.VISIBLE);

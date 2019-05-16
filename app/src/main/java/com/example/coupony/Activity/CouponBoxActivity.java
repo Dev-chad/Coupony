@@ -32,7 +32,7 @@ public class CouponBoxActivity extends AppCompatActivity {
 
         ListView listView = findViewById(R.id.list_coupon);
         //CouponBoxAdapter adapter = new CouponBoxAdapter(this, R.layout.couponboxview, datas);
-        ///listView.setAdapter(adapter);
+        //listView.setAdapter(adapter);
     }
 }
 
