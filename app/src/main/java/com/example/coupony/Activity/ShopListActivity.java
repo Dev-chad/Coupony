@@ -43,7 +43,7 @@ public class ShopListActivity extends AppCompatActivity {
         final ListView listViewShop = findViewById(R.id.list_shop);
 
         shopList = new ArrayList<>();
-        adapter = new ShopListAdapter(this, R.layout.listview_shop, shopList);
+        adapter = new ShopListAdapter(this, R.layout.listview_shop, shopList, ShopListAdapter.MODE_VIEW);
 
         listViewShop.setAdapter(adapter);
         listViewShop.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -59,7 +59,9 @@ public class ShopListActivity extends AppCompatActivity {
             }
         });
 
-        HttpConnect httpConnect = new HttpConnect("category=coffee", Constant.SERVER_GETSHOPLIST_ADDRESS, requestCallback);
+        String param = "category=" + category + "&status=Y";
+
+        HttpConnect httpConnect = new HttpConnect(param, Constant.SERVER_GETSHOPLIST_ADDRESS, requestCallback);
         httpConnect.execute();
     }
 

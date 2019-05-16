@@ -8,12 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.coupony.Connect.HttpConnect;
+import com.example.coupony.Connect.RequestCallback;
 import com.example.coupony.Data.Shop;
 import com.example.coupony.R;
+import com.example.coupony.Utils.Constant;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -24,14 +31,19 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class ShopListAdapter extends BaseAdapter {
+    final public static int MODE_VIEW = 0;
+    final public static int MODE_REGISTER = 1;
+
     private Activity activity;
     private int layoutId;
     private ArrayList<Shop> shopList;
+    private int mode;
 
-    public ShopListAdapter(Activity activity, int layoutId, ArrayList<Shop> shopList) {
+    public ShopListAdapter(Activity activity, int layoutId, ArrayList<Shop> shopList, int mode) {
         this.activity = activity;
         this.layoutId = layoutId;
         this.shopList = shopList;
+        this.mode = mode;
     }
 
     @Override
@@ -70,6 +82,41 @@ public class ShopListAdapter extends BaseAdapter {
             Glide.with(view).load(shop.getLogoUrl()).into(imageLogo);
         }
 
+        Button btnAccept = view.findViewById(R.id.btn_accept);
+
+        if(mode == MODE_REGISTER){
+            btnAccept.setVisibility(View.VISIBLE);
+            btnAccept.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String param = "shop_idx="+shop.getIdx() + "&status=Y";
+
+                    HttpConnect httpConnect = new HttpConnect(param, Constant.SERVER_EDITSHOP_ADDRESS, new RequestCallback() {
+                        @Override
+                        public void callBack(String jsonResult) {
+                            try{
+                                JSONObject jsonObject = new JSONObject(jsonResult);
+
+                                if(jsonObject.getString("result").equals("ok")){
+                                    shopList.remove(shop);
+
+                                    notifyDataSetChanged();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+
+                    httpConnect.execute();
+                }
+            });
+        } else {
+            btnAccept.setVisibility(View.INVISIBLE);
+        }
+
         return view;
     }
+
+
 }
