@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -45,6 +46,7 @@ public class CouponListActivity extends AppCompatActivity {
     private TextView textViewMakeCoupon;
     private LinearLayout layoutSavingCoupon;
     private CouponListAdapter couponListAdapter;
+    private Button btnSavingCoupon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +66,9 @@ public class CouponListActivity extends AppCompatActivity {
         couponListAdapter = new CouponListAdapter(this, R.layout.view_coupon, couponList);
         usingCouponList.setAdapter(couponListAdapter);
 
-        findViewById(R.id.btn_saving_coupon).setOnClickListener(new View.OnClickListener() {
+        btnSavingCoupon = findViewById(R.id.btn_saving_coupon);
+        btnSavingCoupon.setVisibility(View.INVISIBLE);
+        btnSavingCoupon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showQRCodeDialog(savingCoupon);
@@ -101,10 +105,12 @@ public class CouponListActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menu_userpage:
                 Intent userintent = new Intent(CouponListActivity.this, UserPageActivity.class);
+                userintent.putExtra("user", user);
                 startActivity(userintent);
                 break;
             case R.id.menu_scan:
                 Intent scanintent = new Intent(CouponListActivity.this, UserPageActivity.class);  // 쿠폰 스캔하기로 바꾸기
+                scanintent.putExtra("user", user);
                 startActivity(scanintent);
                 break;
         }
@@ -125,6 +131,7 @@ public class CouponListActivity extends AppCompatActivity {
                     if (savingCount > -1) {
                         textViewMakeCoupon.setVisibility(View.GONE);
                         layoutSavingCoupon.setVisibility(View.VISIBLE);
+                        btnSavingCoupon.setVisibility(View.VISIBLE);
 
                         for (int i = 0; i < 10; i++) {
                             ImageView imgSaving = findViewById(savingCouponIds[i]);
